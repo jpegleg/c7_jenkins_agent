@@ -1,9 +1,14 @@
+ // simple template
+ // expand this and add more tests and more publishing into rpms etc
+
 pipeline {
+    // have your new agent do the builds tagged as rpm
+    // then this pipeline is run from the main jenkins instance
+    // routing jobs for this agent when label 'rpm'
     agent {
         label 'rpm'
     }
- // simple template
- // expand this and add more tests and more publishing into rpms etc
+
 
     stages {
         stage('Build') {

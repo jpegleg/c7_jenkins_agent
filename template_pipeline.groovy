@@ -50,7 +50,7 @@ pipeline {
             steps {
                 // test the rpm
                 sh "rm -f /usr/local/bin/h2b2"
-                sh "ls -larth /srv/*.rpm | tail -n1 | awk '{print $9}' | xargs rpm -ivvv"
+                sh "ls /srv/*.rpm | tail -n1 | xargs rpm -ivvv"
             }
             post {
                 success {
@@ -58,7 +58,5 @@ pipeline {
                 }
             }
         }     
-     
-     
     }
 }

@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('App Tests') {
+        stage('Tests') {
             steps {
                 // test the program
                 sh "echo 123123123123 | /srv/h2b2__built > /srv/h2b2__tested"
@@ -41,22 +41,22 @@ pipeline {
             post {
                 success {
                     sh "ls /srv/h2b2_latest_qa.tgz || exit 1"
-                    sh "ls /usr/local/bin/h2b2 || exit 1"
-                    sh "cp /srv/rpmbuild/SRPMS/*.rpm /srv/ && touch /srv/h2b2_rpm_pickup.lock"
+                    sh "cp /srv/rpmbuild/RPMS/x86_64/h2b2*.rpm /srv/ && touch /srv/h2b2_rpm_pickup.lock"
                 }
             }
-        } 
+        }
         stage('RPM Tests') {
             steps {
                 // test the rpm
+                sh "yum erase -y h2b2"
                 sh "rm -f /usr/local/bin/h2b2"
-                sh "ls /srv/*.rpm | tail -n1 | xargs rpm -ivvv"
+                sh "ls /srv/*.rpm | tail -n1 | xargs yum install -y"
             }
             post {
                 success {
                     sh "ls -larth /usr/local/bin/h2b2 || exit 1"
                 }
             }
-        }     
+        }             
     }
 }

@@ -143,6 +143,16 @@
     tags:
     - firewallReload
 
+- name: send over rpmmacros
+    copy:
+      src: .rpmmacros
+      dest: /root/.rpmmacros
+      owner: root
+      group: root
+      mode: '0644'
+    tags:
+    - macros
+
 
 
 ##########################################

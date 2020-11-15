@@ -121,7 +121,7 @@
 ##########################################
 ##                                      ##
 #                                        #
-#         Local configure.               #
+#           Local configure.             #
 #                                        #
 ##                                      ##
 ##########################################
@@ -158,7 +158,7 @@
 ##########################################
 ##                                      ##
 #                                        #
-#         Install jenkins.               #
+#           Install jenkins.             #
 #                                        #
 ##                                      ##
 ##########################################
@@ -212,6 +212,16 @@
     tags:
     - yumUtils
     - yum
+
+
+
+##########################################
+##                                      ##
+#                                        #
+#          Install docker-ce.            #
+#                                        #
+##                                      ##
+##########################################
 
   - name: install docker-ce.repo
     shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo

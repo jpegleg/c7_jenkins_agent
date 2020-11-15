@@ -2,7 +2,8 @@ pipeline {
     agent {
         label 'rpm'
     }
-    
+ // simple template
+ // expand this and add more tests and more publishing into rpms etc
 
     stages {
         stage('Build') {

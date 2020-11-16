@@ -32,9 +32,9 @@ pipeline {
         stage('Publish') {
             steps {
                 // make a tarball for pick up
-                sh "tar czvf /srv/h2b2_latest_qa.tgz /srv/h2b2__built /srv/workspace/h2b2_compiler_pipeline/ && touch /srv/h2b2_pickup.lock"
+                sh "tar czvf /srv/h2b2_latest_qa.tgz /srv/h2b2__built /srv/workspace/h2b2_rpm_build_pipeline/ && touch /srv/h2b2_pickup.lock"
                 sh "cp /srv/h2b2_latest_qa.tgz /srv/rpmbuild/SOURCES/"
-                sh "cp /srv/workspace/h2b2_compiler_pipeline/h2b2.spec /srv/rpmbuild/SPECS/ "
+                sh "cp /srv/workspace/h2b2_rpm_build_pipeline/h2b2.spec /srv/rpmbuild/SPECS/ "
                 sh "rm -f /usr/local/bin/h2b2"
                 sh "cd /srv/rpmbuild && rpmbuild -ba SPECS/h2b2.spec"
             }
